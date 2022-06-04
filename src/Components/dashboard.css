@@ -3,3 +3,49 @@
   height: 87%;
   overflow: auto;
 }
+
+.category {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  background-color: #efc84a;
+  color: white;
+  position: sticky;
+  top: 9%;
+  z-index: 2;
+}
+.category > h3 {
+  cursor: pointer;
+}
+.category > h3:hover {
+  color: green;
+}
+.categories {
+  padding: 0 10px;
+  margin: 30px 0;
+}
+.categories > h1 {
+  cursor: pointer;
+  text-transform: capitalize;
+  width: fit-content;
+  color: #efc84a;
+}
+.categories > h1:hover {
+  color: green;
+  text-decoration: underline;
+}
+
+.selectedCategory {
+  padding: 10px 30px;
+}
+
+.selectedCategory > h1 {
+  font-size: 2rem;
+  color: #efc84a;
+  text-transform: capitalize;
+}

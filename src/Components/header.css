@@ -1,10 +1,79 @@
 header {
   position: sticky;
   top: 0;
+  z-index: 2;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-content: center;
   align-items: center;
   height: 9%;
+  padding: 0 8px;
+  box-shadow: 0 0 6px #efc84a;
+}
+
+.LogoSec {
+  width: 12%;
+}
+.LogoSec > h1 {
+  cursor: pointer;
+  width: min-content;
+}
+.LogoSec > h1 > span {
+  transition: all 0.5s;
+}
+.LogoSec > h1:hover > span:nth-child(1) {
+  text-shadow: 0 0 4px #efc84a;
+}
+.LogoSec > h1:hover > span:nth-child(2) {
+  text-shadow: 0 0 4px green;
+}
+.SerachSec {
+  width: 25%;
+  height: 100%;
+}
+.SerachSec > form {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.SerachSec > form > input {
+  width: 90%;
+  height: 50%;
+  border: 1px solid #efc84a;
+}
+.SerachSec > form > button {
+  width: 10%;
+  background-image: url("../Assets/images/search.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  height: 60%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.SerachSec > form > button:hover {
+  transform: scale(1.2);
+}
+
+.ProfileSec {
+  width: 12%;
+  display: flex;
+  gap: 40px;
+  padding-right: 10px;
+  color: #efc84a;
+  text-decoration: underline;
+  text-decoration-color: green;
+}
+
+.ProfileSec > h4 {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.ProfileSec > h4:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 6px #efc84a;
 }

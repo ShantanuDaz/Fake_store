@@ -11,9 +11,10 @@ const Card = ({
   rate = "",
   style = {},
   classname = "",
+  onClick,
 }) => {
   return (
-    <div className={classname} style={style}>
+    <div className={classname} style={style} onClick={() => onClick()}>
       <div className="image" style={{ backgroundImage: `url(${image})` }}>
         <div className="rate">
           <span>{rate}</span>
