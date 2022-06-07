@@ -1,13 +1,15 @@
 import React from "react";
 import "./header.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  // const [serachedItem, setItem] = useState("");
+  let navigate = useNavigate();
+
   return (
     <>
       <header>
         <div className="LogoSec">
-          <h1>
+          <h1 onClick={() => navigate("/")}>
             <span style={{ color: "#efc84a" }}>Sab.</span>
             <span style={{ color: "green" }}>Kuch.</span>
           </h1>

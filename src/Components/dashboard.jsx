@@ -3,7 +3,9 @@ import "./dashboard.css";
 import Card from "./card/card";
 import CardLayout from "./cardLayout/cardLayout";
 import Product from "./product/product";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
+  let navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
@@ -11,17 +13,6 @@ const Dashboard = () => {
   const [selectedProduct, setSelectedProduct] = useState(false);
   useEffect(() => {
     getCategories();
-    fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      headers: new Headers({ "content-type": "application/json" }),
-      body: JSON.stringify({
-        username: "johnd",
-        password: "m38rmF$",
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((e) => console.error(e));
   }, []);
 
   const getCategories = async () => {
@@ -55,27 +46,6 @@ const Dashboard = () => {
     }
   };
 
-  const getSelectedCategoryProducts = async (category) => {
-    try {
-      let productData = {};
-      setLoading(true);
-      const res = await fetch(
-        `https://fakestoreapi.com/products/category/${category}`
-      );
-      const jsonres = await res.json();
-      productData = {
-        name: category,
-        data: jsonres,
-      };
-      setSelectedProduct(false);
-      setSelectedCategory(productData);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setError(true);
-    }
-  };
-
   if (isError) {
     return <div>Error</div>;
   } else if (isLoading) {
@@ -95,7 +65,7 @@ const Dashboard = () => {
           </h3>
           {categoriesData.map((item, index) => (
             <h3
-              onClick={() => getSelectedCategoryProducts(item.name)}
+              onClick={() => navigate(`/category/${item.name}`)}
               key={index}
               style={
                 selectedCategory.name === item.name ? { color: "green" } : {}
@@ -120,12 +90,14 @@ const Dashboard = () => {
           </>
         ) : (
           <>
-            {selectedCategory ? (
-              <>
-                <section className="selectedCategory">
-                  <h1>{selectedCategory.name}</h1>
-                  <CardLayout type="multiRow">
-                    {selectedCategory.data.map((item1, index1) => {
+            {categoriesData.map((item, index) => {
+              return (
+                <section className="categories" key={index}>
+                  <h1
+                    onClick={() => navigate(`/category/${item.name}`)}
+                  >{`${item.name} >`}</h1>
+                  <CardLayout>
+                    {item.data.map((item1, index1) => {
                       return (
                         <Card
                           key={index1}
@@ -138,43 +110,14 @@ const Dashboard = () => {
                           rate={item1.rating.rate}
                           count={item1.rating.count}
                           classname="card"
-                          onClick={() => setSelectedProduct(item1)}
+                          onClick={() => navigate(`/product/${item1.id}`)}
                         />
                       );
                     })}
                   </CardLayout>
                 </section>
-              </>
-            ) : (
-              categoriesData.map((item, index) => {
-                return (
-                  <section className="categories" key={index}>
-                    <h1
-                      onClick={() => getSelectedCategoryProducts(item.name)}
-                    >{`${item.name} >`}</h1>
-                    <CardLayout>
-                      {item.data.map((item1, index1) => {
-                        return (
-                          <Card
-                            key={index1}
-                            image={item1.image}
-                            title={item1.title}
-                            description={item1.description}
-                            price={item1.price}
-                            id={item1.id}
-                            category={item1.category}
-                            rate={item1.rating.rate}
-                            count={item1.rating.count}
-                            classname="card"
-                            onClick={() => setSelectedProduct(item1)}
-                          />
-                        );
-                      })}
-                    </CardLayout>
-                  </section>
-                );
-              })
-            )}
+              );
+            })}
           </>
         )}
       </>

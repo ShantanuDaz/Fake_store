@@ -11,10 +11,10 @@ const Footer = () => {
         <section>
           <h1>Like &#38; Follow Us At</h1>
           <div>
-            <img src={faceBookIcon} alt="faceBookIcon" />
-            <img src={instaIcon} alt="instaIcon" />
-            <img src={linkedinIcon} alt="linkedinIcon" />
-            <img src={twitterIcon} alt="twitterIcon" />
+            <img loading="lazy" src={faceBookIcon} alt="faceBookIcon" />
+            <img loading="lazy" src={instaIcon} alt="instaIcon" />
+            <img loading="lazy" src={linkedinIcon} alt="linkedinIcon" />
+            <img loading="lazy" src={twitterIcon} alt="twitterIcon" />
           </div>
         </section>
         <section>

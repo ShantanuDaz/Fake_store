@@ -19,11 +19,7 @@
   align-content: center;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 50%;
-}
-.product > div:nth-child(1) > img {
-  height: 75%;
-  max-width: 80%;
+  background-size: contain;
 }
 
 .productPrice {
@@ -62,7 +58,10 @@
 }
 .productOptions > div {
   display: flex;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
+  font-weight: bold;
   border: 7px solid;
   cursor: pointer;
+  transition: all 0.5s;
+  padding: 9px;
 }
