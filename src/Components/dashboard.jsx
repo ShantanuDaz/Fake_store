@@ -3,11 +3,10 @@ import "./dashboard.css";
 import Card from "./card/card";
 import CardLayout from "./cardLayout/cardLayout";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setCategories } from "../Redux/silcer";
+
 const Dashboard = () => {
   let navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
@@ -20,7 +19,6 @@ const Dashboard = () => {
       const res = await fetch("https://fakestoreapi.com/products/categories");
       const jsonres = await res.json();
       getProducts(jsonres);
-      dispatch(setCategories(jsonres));
     } catch (e) {
       console.error(e);
       setError(true);
