@@ -12,7 +12,7 @@ const ProductDashboard = () => {
   const [isError, setError] = useState(false);
   useEffect(() => {
     getSelectedCategoryProducts();
-  }, []);
+  }, [category]);
 
   const getSelectedCategoryProducts = async () => {
     try {

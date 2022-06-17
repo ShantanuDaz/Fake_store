@@ -21,7 +21,7 @@ const Header = () => {
           </form>
         </div>
         <div className="ProfileSec">
-          <h4>Cart</h4>
+          <h4 onClick={() => navigate("/cart")}>Cart</h4>
           <h4>Login/SignUp</h4>
         </div>
       </header>

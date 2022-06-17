@@ -20,13 +20,13 @@ header {
   width: min-content;
 }
 .LogoSec > h1 > span {
-  transition: all 0.5s;
+  transition: all 0.7s;
 }
 .LogoSec > h1:hover > span:nth-child(1) {
-  text-shadow: 0 0 4px #efc84a;
+  text-shadow: 4px 2px 4px #efc84a;
 }
 .LogoSec > h1:hover > span:nth-child(2) {
-  text-shadow: 0 0 4px green;
+  text-shadow: 4px 2px 4px green;
 }
 .SerachSec {
   width: 25%;

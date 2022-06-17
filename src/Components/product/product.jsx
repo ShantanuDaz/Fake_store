@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./product.css";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setItems } from "../../Redux/silcer";
 
 const Product = () => {
+  const dispatch = useDispatch();
   let { productId } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
@@ -64,7 +67,7 @@ const Product = () => {
           <p className="productDes">{description}</p>
           <div className="productOptions">
             <div>Buy Now</div>
-            <div>Add To Cart</div>
+            <div onClick={() => dispatch(setItems(product))}>Add To Cart</div>
           </div>
         </div>
       </section>
