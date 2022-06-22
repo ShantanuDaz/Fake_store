@@ -12,6 +12,7 @@ const Categories = () => {
         <h3
           onClick={() => {
             setSelectedCategory(false);
+            navigate(`/`);
           }}
           style={selectedCategory ? {} : { color: "green" }}
         >

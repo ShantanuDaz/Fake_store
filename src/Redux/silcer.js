@@ -4,14 +4,17 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     categories: [],
-    items: [],
+    items: {},
   },
   reducers: {
     setCategories: (state, action) => {
       state.categories = action.payload;
     },
     setItems: (state, action) => {
-      state.items = [...state.items, action.payload];
+      state.items[action.payload] =
+        state.items[action.payload] !== undefined
+          ? state.items[action.payload] + 1
+          : 1;
     },
   },
 });

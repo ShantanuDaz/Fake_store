@@ -1,0 +1,23 @@
+.cartProduct {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+.cartProductDes {
+  text-align: center;
+}
+.cartProductDes > p {
+  width: 50%;
+  margin: auto;
+  font-size: 1.3rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cartProductDes > div {
+  width: 100%;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

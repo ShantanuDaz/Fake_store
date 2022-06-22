@@ -22,7 +22,7 @@ const Product = () => {
 
   useEffect(() => {
     getProductDetalis();
-  });
+  }, []);
 
   const getProductDetalis = async () => {
     try {
@@ -67,7 +67,9 @@ const Product = () => {
           <p className="productDes">{description}</p>
           <div className="productOptions">
             <div>Buy Now</div>
-            <div onClick={() => dispatch(setItems(product))}>Add To Cart</div>
+            <div onClick={() => dispatch(setItems(product.id))}>
+              Add To Cart
+            </div>
           </div>
         </div>
       </section>
