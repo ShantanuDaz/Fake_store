@@ -1,11 +1,16 @@
+.cart {
+  height: 66%;
+  overflow: auto;
+}
 .cartProduct {
   display: grid;
   grid-template-columns: 50% 25% 25%;
+  margin-bottom: 20px;
 }
 .cartProductDes {
   text-align: center;
 }
-.cartProductDes > p {
+.cartProductDes > abbr {
   width: 50%;
   margin: auto;
   font-size: 1.3rem;
@@ -13,6 +18,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none;
+  display: block;
 }
 .cartProductDes > div {
   width: 100%;
@@ -20,4 +27,17 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.cartProductPrice {
+  display: grid;
+  align-items: center;
+  align-content: center;
+}
+.cartProductPrice > p:nth-child(1) {
+  font-size: 2rem;
+}
+.cartProductPrice > p:nth-child(2) {
+  font-size: 2.5rem;
+  color: green;
 }

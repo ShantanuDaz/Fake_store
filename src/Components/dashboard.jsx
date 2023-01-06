@@ -46,7 +46,7 @@ const Dashboard = () => {
   };
 
   if (isError) {
-    return <div>Error</div>;
+    return <h1 style={{ color: "red" }}>Error</h1>;
   } else if (isLoading) {
     return <h1>Loading ...</h1>;
   } else

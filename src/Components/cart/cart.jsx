@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import "./cart.css";
 const Cart = () => {
   const items = useSelector((state) => state.counter.items);
-  const [Loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(false);
+  const [isError, setError] = useState(false);
   useEffect(() => {
     getProducts(Object.keys(items));
-  }, []);
+  }, [JSON.stringify(items)]);
 
   const getProducts = (categories) => {
     try {
@@ -25,27 +25,35 @@ const Cart = () => {
       setError(true);
     }
   };
-  return (
-    <>
-      Cart
-      {products.map((item) => {
-        return (
-          <div className="cartProduct">
-            <div className="cartProductDes">
-              <p>{item.title}</p>
-              <div style={{ backgroundImage: `url(${item.image})` }}></div>
-            </div>
-            <div>
-              <p>Price</p>
-              <p>{`${item.price} X ${items[item.id]} = ${item.price *
-                items[item.id]}`}</p>
-            </div>
-            <div></div>
-          </div>
-        );
-      })}
-    </>
-  );
+
+  if (isError) {
+    return <h1 style={{ color: "red" }}>Error</h1>;
+  } else if (isLoading) {
+    return <h1>Loading ...</h1>;
+  } else
+    return (
+      <>
+        <div className="cart">
+          Cart
+          {products.map((item) => {
+            return (
+              <div className="cartProduct">
+                <div className="cartProductDes">
+                  <abbr title={item.title}>{item.title}</abbr>
+                  <div style={{ backgroundImage: `url(${item.image})` }}></div>
+                </div>
+                <div className="cartProductPrice">
+                  <p>Price</p>
+                  <p>{`$${item.price} X ${items[item.id]} = $${item.price *
+                    items[item.id]}`}</p>
+                </div>
+                <div></div>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
 };
 
 export default Cart;
