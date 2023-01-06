@@ -2,6 +2,12 @@
   height: 66%;
   overflow: auto;
 }
+.cart > h1 {
+  cursor: pointer;
+  text-transform: capitalize;
+  width: fit-content;
+  color: #efc84a;
+}
 .cartProduct {
   display: grid;
   grid-template-columns: 50% 25% 25%;

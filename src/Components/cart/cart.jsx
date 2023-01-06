@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItems } from "../../Redux/silcer";
+
 import "./cart.css";
 const Cart = () => {
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.counter.items);
   const [isLoading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [isError, setError] = useState(false);
   useEffect(() => {
-    getProducts(Object.keys(items));
+    let products = Object.keys(items);
+    getProducts(products);
   }, [JSON.stringify(items)]);
 
-  const getProducts = (categories) => {
+  const getProducts = (categories = []) => {
+    if (categories.length === 0) {
+      setLoading(false);
+      return;
+    }
     try {
       let productData = [];
       categories.map(async (item) => {
@@ -34,7 +42,7 @@ const Cart = () => {
     return (
       <>
         <div className="cart">
-          Cart
+          <h1>Cart</h1>
           {products.map((item) => {
             return (
               <div className="cartProduct">

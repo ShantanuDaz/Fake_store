@@ -5,6 +5,7 @@
   transition: all 0.5s;
   min-width: 300px;
   cursor: pointer;
+  padding: 5px;
 }
 
 .card:hover {

@@ -69,11 +69,25 @@ header {
   text-decoration-color: green;
 }
 
-.ProfileSec > h4 {
+.ProfileSec > div {
   cursor: pointer;
   transition: all 0.3s;
+  position: relative;
 }
-.ProfileSec > h4:hover {
+.ProfileSec > div:hover {
   transform: scale(1.2);
   box-shadow: 0 0 6px #efc84a;
+}
+
+.ProfileSec > div:nth-child(1)::before {
+  position: absolute;
+  content: attr(data-num);
+  top: -14px;
+  right: -15px;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  aspect-ratio: 1/1;
+  text-align: center;
 }

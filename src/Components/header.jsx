@@ -1,9 +1,11 @@
 import React from "react";
 import "./header.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   let navigate = useNavigate();
+  const noOfItems = useSelector((state) => state.counter.noOfItems);
 
   return (
     <>
@@ -15,14 +17,18 @@ const Header = () => {
           </h1>
         </div>
         <div className="SerachSec">
-          <form action="">
+          {/* <form action="">
             <input type="search" name="search" id="search" />
             <button type="submit"></button>
-          </form>
+          </form> */}
         </div>
         <div className="ProfileSec">
-          <h4 onClick={() => navigate("/cart")}>Cart</h4>
-          <h4>Login/SignUp</h4>
+          <div onClick={() => navigate("/cart")} data-num={`${noOfItems}`}>
+            <h4>Cart</h4>
+          </div>
+          {/* <div>
+            <h4>Login/SignUp</h4>
+          </div> */}
         </div>
       </header>
     </>
