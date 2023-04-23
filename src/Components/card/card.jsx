@@ -21,9 +21,13 @@ const Card = ({
         </div>
       </div>
       <p className="price">{`$${price}`}</p>
-      <p className="title">{title}</p>
+      <p className="title" title={title}>
+        {title}
+      </p>
       <div className="info">
-        <p className="des">{description}</p>
+        <p className="des" title={description}>
+          {description}
+        </p>
         <p className="count">{count}</p>
       </div>
     </div>

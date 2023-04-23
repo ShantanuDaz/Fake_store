@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItems } from "../../Redux/silcer";
+import { removeItems, setItems } from "../../Redux/silcer";
 
 import "./cart.css";
 const Cart = () => {
@@ -17,6 +17,7 @@ const Cart = () => {
   const getProducts = (categories = []) => {
     if (categories.length === 0) {
       setLoading(false);
+      setProducts([]);
       return;
     }
     try {
@@ -55,10 +56,31 @@ const Cart = () => {
                   <p>{`$${item.price} X ${items[item.id]} = $${item.price *
                     items[item.id]}`}</p>
                 </div>
-                <div></div>
+                <div className="cartProductCount">
+                  <button
+                    className="cartBtn"
+                    style={{ "--bg-color": "#efc84a" }}
+                    onClick={() => dispatch(setItems(item.id))}
+                  >
+                    +
+                  </button>
+                  {items[item.id]}
+                  <button
+                    className="cartBtn"
+                    style={{ "--bg-color": "red" }}
+                    onClick={() => dispatch(removeItems(item.id))}
+                  >
+                    -
+                  </button>
+                </div>
               </div>
             );
           })}
+          <div className="cartPay">
+            <button className="pay">
+              <h1>BUY</h1>
+            </button>
+          </div>
         </div>
       </>
     );
